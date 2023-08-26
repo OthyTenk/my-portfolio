@@ -33,3 +33,42 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 # my-portfolio
+
+### create next app
+
+```
+npx create-next-app@latest
+```
+```
+cd my-portfolio/
+```
+### Open Vscode
+```
+code .
+```
+### Install Tailwind CSS and its peer-dependencies
+```
+npm i -D prisma @tailwindcss/typography @tailwindcss/forms
+```
+### Install @headlessui/react dependencies
+```
+npm i next-themes @headlessui/react
+```
+```
+npm run dev
+```
+
+### Install Sanity CLI
+```
+npx sanity@latest logout && npm create sanity@latest -- --template clean --create-project "Sanity project" --dataset production
+```
+```
+cd sanity-project/
+```
+```
+npm run de
+```
+### Install Sanity Client
+```
+npm i next-sanity
+```
