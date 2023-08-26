@@ -18,7 +18,7 @@ export default function Home() {
             OkDo
           </h3>
           <p className="text-gray-500 dark:text-gray-300 text-center">
-            Hey my name is Okdo, I am a full stack developer.
+            Hey my name is OkDo, I am a full stack developer.
           </p>
 
           <div className="flex space-x-5 pt-6">
@@ -63,18 +63,18 @@ export default function Home() {
 
         <div className="prose max-w-none prose-lg pt-8 pb-7 dark:prose-invert xl:col-span-2">
           <p>
-            Hello all my name is OkDo, I am 38 years old and I am currently working on my
+            Hello all my name is OkDo, I am currently working on my
             own projects and learning new technologies.
           </p>
           <p>
             I love building Full Stack applications with React and to share them
-            on YouTube. When I discovered React, I was blown away by its
+            on GitHub. When I discovered React, I was blown away by its
             interactivity and speed. Its virtual DOM and efficient rendering
             mechanisms allowed me to create dynamic user interfaces that
             responded to user actions in real-time.
           </p>
           <p>
-            Building applications with React and sharing them on YouTube is my
+            Building applications with React and sharing them on github is my
             ultimate combination of creative expression, technical expertise,
             and community engagement. I am thrilled to continue this journey,
             honing my skills, and inspiring others in the process.

@@ -3,3 +3,4 @@ export {ThemeSwitcher} from './ThemeSwitcher';
 export {Provider} from './Provider'; 
 export {PageHeader} from './PageHeader';
 export {ProjectCard} from './ProjectCard';
+export {Footer} from './Footer';
