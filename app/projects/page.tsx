@@ -14,6 +14,7 @@ const  getProjects = async ():Promise<ProjectType[]> => {
       }`
     );
 }
+export const revalidate = 60;
 
 const page = async () => {
     const projects = await getProjects()
