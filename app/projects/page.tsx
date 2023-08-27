@@ -17,7 +17,8 @@ const  getProjects = async ():Promise<ProjectType[]> => {
 export const revalidate = 60;
 
 const page = async () => {
-    const projects = await getProjects()
+  const projects = await getProjects()
+  
   return (
     <div className="divide-y divide-gray-200 dark:divide-gray-700">
       <PageHeader title="All Projects" />
