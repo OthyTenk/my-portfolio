@@ -25,17 +25,16 @@ export default async function Home() {
 
   return (
     <div className="divide-y divide-gray-100 dark:divide-gray-700">
-      <PageHeader title="Home" />
 
-      <div className="items-center space-y-2 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0">
+      <div className="mt-24 items-center space-y-2 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0">
         <div className="flex flex-col items-center pt-8">
-            <Image
-              width={210}
-              height={210}
-              src={profile[0].image?.src}
-              alt={profile[0].image?.alt}
-              className="w-41 h-41 object-cover rounded-full object-top"
-            />
+          <Image
+            width={210}
+            height={210}
+            src={profile[0].image?.src}
+            alt={profile[0].image?.alt}
+            className="w-41 h-41 object-cover rounded-full object-top"
+          />
           <h3 className="pt-4 pb-2 text-2xl font-bold leading-8 tracking-tight">
             {profile[0].fullname}
           </h3>
