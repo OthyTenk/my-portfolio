@@ -1,9 +1,8 @@
 import { PortableText } from "@portabletext/react";
 import { groq } from "next-sanity";
 import Image from "next/image";
-import { PageHeader } from "./components";
-import { ProfileType } from "./types";
-import { client } from "./utils/sanity.client";
+import { ProfileType } from "../types";
+import { client } from "../utils/sanity.client";
 
 const getProfile = async (): Promise<ProfileType[]> => {
   return client.fetch(
