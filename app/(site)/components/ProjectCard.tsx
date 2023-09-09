@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { FC } from 'react';
-import { ProjectType } from '../types';
+import { ProjectType } from '../../types';
 
 interface ProjectCardProps {
   project: ProjectType;
