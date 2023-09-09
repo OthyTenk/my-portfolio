@@ -1,8 +1,8 @@
+"use client"
 import Link from "next/link";
 import { PageHeader } from "../components";
 
 const page = () => {
-  
   return (
     <div className="divide-y divide-gray-200 dark:divide-gray-700">
       <PageHeader title="Sanity Studio" />
