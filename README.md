@@ -59,14 +59,18 @@ npm run dev
 ```
 
 ### Install Sanity CLI
+Create a new folder for sanity project
 ```
-npx sanity@latest logout && npm create sanity@latest -- --template clean --create-project "Sanity project" --dataset production
+mkdir sanity-project
 ```
 ```
 cd sanity-project/
 ```
 ```
-npm run de
+npx sanity@latest logout && npm create sanity@latest -- --template clean --create-project "Sanity project" --dataset production
+```
+```
+npm run dev
 ```
 ### Install Sanity Client
 ```
