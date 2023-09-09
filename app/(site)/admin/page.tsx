@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { PageHeader } from "../components";
 
-const page = async () => {
+const page = () => {
   
   return (
     <div className="divide-y divide-gray-200 dark:divide-gray-700">
