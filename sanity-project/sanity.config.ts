@@ -5,7 +5,7 @@ import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemas'
 
 export default defineConfig({
-  name: 'default',
+  name: 'sanity-project',
   title: 'Sanity project',
 
   projectId: 'c5g75h7y',
@@ -19,7 +19,7 @@ export default defineConfig({
     }),
   ],
 
-  // plugins: [deskTool(),visionTool()],
+  basePath: '/studio',
 
   schema: {
     types: schemaTypes,
