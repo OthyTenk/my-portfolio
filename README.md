@@ -1,8 +1,9 @@
 # Portfolio - Screenshot 
 
-<img width="1500" alt="Screenshot 2023-11-29 at 17 35 33" src="https://github.com/OthyTenk/my-portfolio/assets/34827155/77ba2da9-f114-49d8-8951-bae182ee4982">
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![portfolio](https://github.com/OthyTenk/my-portfolio/assets/34827155/b6da77c6-cb83-43fd-a99e-788d4e0513d6)
+
+
 
 ## Getting Started
 
