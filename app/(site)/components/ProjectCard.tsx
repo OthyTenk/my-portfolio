@@ -1,20 +1,22 @@
-import Image from 'next/image';
-import { FC } from 'react';
-import { ProjectType } from '../../types';
+"use client";
+
+import Image from "next/image";
+import { FC } from "react";
+import { ProjectType } from "../../types";
 
 interface ProjectCardProps {
   project: ProjectType;
 }
 
-export const ProjectCard: FC<ProjectCardProps> = ({project}) => {
+export const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
   return (
-    <article className="overflow-hidden dark:border-zinc-600 rounded-lg border border-gray-100 bg-white shadow-lg dark:bg-black dark:shadow-gray-700 shadow-orange-100">
-      <div className="h-56 w-full relative">
+    <article className="mx-4 lg:mx-0 overflow-hidden dark:border-zinc-600 rounded-3xl hover:shadow-none border border-gray-100 bg-[#eeeeee] shadow-lg dark:bg-[#1a1a1a] dark:shadow-gray-700 shadow-orange-100">
+      <div className="h-64 w-full relative overflow-hidden">
         <Image
           fill
           src={project.imageUrl}
           alt={project.title}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover hover:scale-105 transition"
         />
       </div>
 

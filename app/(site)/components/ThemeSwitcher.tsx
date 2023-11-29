@@ -1,6 +1,7 @@
-'use client';
-import { useTheme } from 'next-themes';
-import  { useEffect, useState } from 'react'
+"use client";
+
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 export const ThemeSwitcher = () => {
   const { setTheme, resolvedTheme } = useTheme();
@@ -10,13 +11,13 @@ export const ThemeSwitcher = () => {
   if (!mounted) return null;
 
   const onChangeTheme = () => {
-    setTheme(resolvedTheme === "dark" ? "light" : "dark")
-  }
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
+  };
 
   return (
     <button
       onClick={onChangeTheme}
-      className="bg-orange-500/25 p-2 rounded-lg text-orange-500"
+      className="bg-orange-500/25 p-2 rounded-2xl text-orange-500"
     >
       {resolvedTheme === "dark" ? (
         <svg
@@ -51,4 +52,4 @@ export const ThemeSwitcher = () => {
       )}
     </button>
   );
-}
+};
