@@ -2,7 +2,6 @@
 
 import { Disclosure } from "@headlessui/react";
 import Link from "next/link";
-import React from "react";
 import { usePathname } from "next/navigation";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 

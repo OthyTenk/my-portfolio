@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Provider } from "./(site)/components";
@@ -21,6 +22,7 @@ export default function RootLayout({
         className={`${inter.className} bg-white text-black dark:bg-[#1f1f1f] dark:text-white h-full selection:bg-gray-50 dark:selection:bg-gray-800`}
       >
         <Provider>{children}</Provider>
+        <Analytics />
       </body>
     </html>
   );

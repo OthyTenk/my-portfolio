@@ -1,11 +1,5 @@
-import type { Metadata } from "next";
 import "../globals.css";
 import { Footer, Navbar } from "./components";
-
-export const metadata: Metadata = {
-  title: "Portfolio: OkDo",
-  description: "OkDo's portfolio",
-};
 
 export default function RootLayout({
   children,
