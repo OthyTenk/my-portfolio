@@ -1,6 +1,6 @@
-export * from './Navbar';
-export {ThemeSwitcher} from './ThemeSwitcher';
-export {Provider} from './Provider'; 
-export {PageHeader} from './PageHeader';
-export {ProjectCard} from './ProjectCard';
-export {Footer} from './Footer';
+export { Footer } from "./Footer";
+export * from "./Navbar";
+export { PageHeader } from "./PageHeader";
+export { ProjectCard } from "./ProjectCard";
+export { Provider } from "./Provider";
+export { ThemeSwitcher } from "./ThemeSwitcher";

@@ -1,7 +1,7 @@
 import { groq } from "next-sanity";
-import { PageHeader, ProjectCard } from "../components";
 import { ProjectType } from "../../types";
 import { client } from "../../utils/sanity.client";
+import { PageHeader, ProjectCard } from "../components";
 
 const getProjects = async (): Promise<ProjectType[]> => {
   return client.fetch(

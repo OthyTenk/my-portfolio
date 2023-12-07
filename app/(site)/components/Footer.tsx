@@ -1,4 +1,5 @@
 "use client";
+
 export const Footer = () => (
   <footer className="mt-20">
     <div className="max-w-6xl mx-auto flex lg:flex-row flex-col items-center lg:justify-between justify-center gap-y-4 md:px-16 px-6 py-16 text-zinc-600">

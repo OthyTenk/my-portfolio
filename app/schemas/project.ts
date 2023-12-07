@@ -1,27 +1,29 @@
-export default {
-  name: 'project',
-  title: 'Project',
-  type: 'document',
+import { defineType, defineField } from "sanity";
+
+export default defineType({
+  name: "project",
+  title: "Project",
+  type: "document",
   fields: [
-    {
-      name: 'title',
-      type: 'string',
-      title: 'Title',
-    },
-    {
-      name: 'overview',
-      type: 'string',
-      title: 'Small Overview',
-    },
-    {
-      name: 'image',
-      type: 'image',
-      title: 'Image',
-    },
-    {
-      name: 'link',
-      type: 'string',
-      title: 'Link',
-    },
+    defineField({
+      name: "title",
+      type: "string",
+      title: "Title",
+    }),
+    defineField({
+      name: "overview",
+      type: "string",
+      title: "Small Overview",
+    }),
+    defineField({
+      name: "image",
+      type: "image",
+      title: "Image",
+    }),
+    defineField({
+      name: "link",
+      type: "string",
+      title: "Link",
+    }),
   ],
-}
+});
