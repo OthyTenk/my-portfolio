@@ -5,7 +5,10 @@ export default defineType({
   title: 'Category',
   type: 'document',
   fields: [
-    defineField({name: 'title', type: 'string'}),
+    defineField({
+      name: 'title',
+      type: 'string',
+    }),
     defineField({
       name: 'parent',
       type: 'reference',
@@ -14,6 +17,11 @@ export default defineType({
       options: {
         filter: '!defined(parent)',
       },
+    }),
+    defineField({
+      name: 'image',
+      type: 'image',
+      title: 'Image',
     }),
   ],
 })

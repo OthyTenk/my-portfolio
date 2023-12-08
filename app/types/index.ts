@@ -24,3 +24,12 @@ export type ProfileType = {
     linkedin: string;
   };
 };
+
+export type CategoryType = {
+  _id: string;
+  title: string;
+  imageUrl: string;
+  parent: {
+    _ref: string;
+  };
+};

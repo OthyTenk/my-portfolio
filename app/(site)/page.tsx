@@ -1,3 +1,4 @@
+import { HomeCategory } from "@/app/(site)/components";
 import { PortableText } from "@portabletext/react";
 import { groq } from "next-sanity";
 import Image from "next/image";
@@ -18,13 +19,14 @@ const getProfile = async (): Promise<ProfileType[]> => {
     }`
   );
 };
+
 export const revalidate = 10;
 
 const HomePage = async () => {
   const profile = await getProfile();
 
   return (
-    <div className="divide-y divide-gray-100 dark:divide-gray-700">
+    <article className="divide-y divide-gray-100 dark:divide-gray-700">
       <div className="mt-24 items-center space-y-2 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0">
         <div className="flex flex-col items-center pt-8">
           <Image
@@ -43,7 +45,7 @@ const HomePage = async () => {
           </p>
 
           {/* Social Links */}
-          <div className="flex space-x-5 mt-6 py-[10px] px-[14px] items-center rounded-3xl bg-slate-300/30 dark:bg-[#3e3e3e]">
+          <div className="flex space-x-5 mt-6 py-[10px] px-[14px] items-center rounded-3xl bg-slate-300/30 dark:bg-neutral-600">
             <SocialLinkItem
               imgAlt="Visit OkDo's Github"
               imgSrc="/images/socials/github.svg"
@@ -74,7 +76,9 @@ const HomePage = async () => {
           <PortableText value={profile[0].fullBio} />
         </div>
       </div>
-    </div>
+
+      <HomeCategory />
+    </article>
   );
 };
 
