@@ -1,7 +1,5 @@
 import {defineArrayMember, defineField, defineType} from 'sanity'
 
-import categoryType from './category'
-
 /**
  * This file is the schema definition for a post.
  *
@@ -60,7 +58,8 @@ export default defineType({
           name: 'category',
           title: 'Project Category',
           type: 'reference',
-          to: [{type: categoryType.name}],
+          // to: [{type: categoryType.name}],
+          to: [{type: 'category'}],
         }),
       ],
     }),
