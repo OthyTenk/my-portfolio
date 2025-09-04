@@ -4,6 +4,7 @@ import { groq } from "next-sanity";
 import Image from "next/image";
 import { Budge, PageHeader } from "../../components";
 import Link from "next/link";
+import { FC } from "react";
 
 const getProjectDetails = async ({
   slug,
@@ -29,8 +30,21 @@ const getProjectDetails = async ({
 };
 export const revalidate = 10;
 
-const page = async ({ params }: { params: { slug: string } }) => {
-  const project = await getProjectDetails({ slug: params?.slug });
+
+interface PageProps {
+  /**
+   * Params object containing the slug of the project
+   * 
+   * @property {string} slug - The slug of the project
+   */
+  params: {
+    slug: string;
+  };
+}
+
+const page:FC<PageProps> = async ({ params }) => {
+  const { slug } = await params;
+  const project = await getProjectDetails({ slug });
   const { title, imageUrl, link, overview, categories, related } = project;
 
   if (!project) {
