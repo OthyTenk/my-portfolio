@@ -1,6 +1,5 @@
 import {defineConfig} from 'sanity'
-// import {defineConfig} from 'sanity/lib/exports'
-import {deskTool} from 'sanity/desk'
+import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemas'
 
@@ -12,7 +11,7 @@ export default defineConfig({
   dataset: 'production',
 
   plugins: [
-    deskTool(),
+    structureTool(),
     visionTool({
       defaultApiVersion: 'v2021-10-21',
       defaultDataset: 'production',
