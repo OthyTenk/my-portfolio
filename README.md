@@ -2,7 +2,7 @@
   <h1>🚀 OkDo's Portfolio</h1>
   <p>A modern, responsive personal portfolio built with Next.js 15 and Sanity CMS</p>
   
-  [![Next.js](https://img.shields.io/badge/Next.js-15.5.2-black?style=flat-square&logo=next.js)](https://nextjs.org/)
+  [![Next.js](https://img.shields.io/badge/Next.js-15.5.7-black?style=flat-square&logo=next.js)](https://nextjs.org/)
   [![TypeScript](https://img.shields.io/badge/TypeScript-5.3.2-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
   [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.3.5-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
   [![Sanity](https://img.shields.io/badge/Sanity-4.6.1-F03E2F?style=flat-square&logo=sanity)](https://www.sanity.io/)
@@ -38,7 +38,7 @@
 
 ### Frontend
 
-- **Framework**: [Next.js 15.5.2](https://nextjs.org/) with App Router
+- **Framework**: [Next.js 15.5.7](https://nextjs.org/) with App Router
 - **Language**: [TypeScript 5.3.2](https://www.typescriptlang.org/)
 - **Styling**: [Tailwind CSS 3.3.5](https://tailwindcss.com/)
 - **UI Components**: [@headlessui/react 2.2.7](https://headlessui.com/)
