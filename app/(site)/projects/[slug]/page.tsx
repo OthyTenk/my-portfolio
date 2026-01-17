@@ -1,10 +1,12 @@
 import { ProjectType } from "@/app/types";
 import { client } from "@/app/utils/sanity.client";
 import { groq } from "next-sanity";
+import { Metadata } from "next";
 import Image from "next/image";
 import { Budge, PageHeader } from "../../components";
 import Link from "next/link";
 import { FC } from "react";
+import { url } from "@/app/utils/constants";
 
 const getProjectDetails = async ({
   slug,
@@ -32,17 +34,49 @@ export const revalidate = 10;
 
 
 interface PageProps {
-  /**
-   * Params object containing the slug of the project
-   * 
-   * @property {string} slug - The slug of the project
-   */
-  params: {
+  params: Promise<{
     slug: string;
+  }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const project = await getProjectDetails({ slug });
+
+  if (!project) {
+    return {
+      title: "Project Not Found",
+      description: "The requested project could not be found.",
+    };
+  }
+
+  return {
+    title: project.title,
+    description: project.overview,
+    openGraph: {
+      title: project.title,
+      description: project.overview,
+      type: "article",
+      url: `${url}/projects/${project.slug.current}`,
+      images: [
+        {
+          url: project.imageUrl ?? "/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: project.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: project.title,
+      description: project.overview,
+      images: [project.imageUrl ?? "/og-image.png"],
+    },
   };
 }
 
-const page:FC<PageProps> = async ({ params }) => {
+const page: FC<PageProps> = async ({ params }) => {
   const { slug } = await params;
   const project = await getProjectDetails({ slug });
   const { title, imageUrl, link, overview, categories, related } = project;
