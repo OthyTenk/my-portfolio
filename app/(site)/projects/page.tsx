@@ -1,6 +1,6 @@
 import { groq } from "next-sanity";
-import { ProjectType } from "../../types";
-import { client } from "../../utils/sanity.client";
+import { ProjectType } from "@/app/types";
+import { client } from "@/app/utils/sanity.client";
 import { PageHeader, ProjectCard } from "../components";
 
 const getProjects = async (): Promise<ProjectType[]> => {
@@ -8,10 +8,10 @@ const getProjects = async (): Promise<ProjectType[]> => {
     groq`*[_type == "project" ]{
         title,
         slug,
-          overview,
-          _id,
-          link,
-          "imageUrl":image.asset->url
+        overview,
+        _id,
+        link,
+        "imageUrl":image.asset->url
       }`
   );
 };

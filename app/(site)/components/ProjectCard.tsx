@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { FC } from "react";
-import { ProjectType } from "../../types";
+import { ProjectType } from "@/app/types";
 import Link from "next/link";
 
 interface ProjectCardProps {
@@ -22,11 +22,11 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
       </div>
 
       <div className="p-4 sm:p-6 flex flex-col">
-        <a href={project.link} target="_blank">
+        <Link href={`projects/${project.slug.current}`}>
           <h3 className="text-lg line-clamp-2 font-medium text-gray-900 dark:text-white">
             {project.title}
           </h3>
-        </a>
+        </Link>
 
         <p className="line-clamp-3 mt-2 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
           {project.overview}
