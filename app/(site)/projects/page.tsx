@@ -9,6 +9,21 @@ export const metadata: Metadata = {
   title: "Projects",
   description:
     "Explore my latest projects built with modern technologies like React, Next.js, and TypeScript.",
+  openGraph: {
+    title: "Projects | Odonbaatar Portfolio",
+    description:
+      "Explore my latest projects built with modern technologies like React, Next.js, and TypeScript.",
+    url: `${url}/projects`,
+    siteName: "Odonbaatar Portfolio",
+    type: "website",
+    images: ["/og-image.png"],
+  },
+  twitter: {
+    title: "Projects | Odonbaatar Portfolio",
+    description:
+      "Explore my latest projects built with modern technologies like React, Next.js, and TypeScript.",
+    images: ["/og-image.png"],
+  },
   alternates: {
     canonical: `${url}/projects`,
   },

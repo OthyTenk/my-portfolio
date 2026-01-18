@@ -12,10 +12,10 @@ export type ProjectType = {
   slug: {
     current: string;
   };
-  overview: string;
-  link: string;
+  overview?: string;
+  link?: string;
   _id: string;
-  imageUrl: string;
+  imageUrl?: string;
   categories: CategoryType[];
   related: RelatedType[];
 };
