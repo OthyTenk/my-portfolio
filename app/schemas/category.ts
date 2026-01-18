@@ -5,7 +5,22 @@ export default defineType({
   title: "Category",
   type: "document",
   fields: [
-    defineField({ name: "title", type: "string" }),
+    defineField({
+      name: "title",
+      type: "string",
+      title: "Title",
+    }),
+    defineField({
+      name: "slug",
+      type: "slug",
+      title: "Slug",
+      options: {
+        source: "title",
+        maxLength: 96,
+        isUnique: (value, context) => context.defaultIsUnique(value, context),
+      },
+      validation: (rule) => rule.required(),
+    }),
     defineField({
       name: "parent",
       type: "reference",
