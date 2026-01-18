@@ -39,10 +39,24 @@ export default defineType({
       type: "string",
       title: "Small Overview",
     }),
+    {
+      name: "description",
+      title: "Description",
+      type: "array",
+      of: [{ type: "block" }],
+    },
     defineField({
       name: "image",
       type: "image",
       title: "Image",
+      options: { hotspot: true },
+      fields: [
+        {
+          name: "alt",
+          title: "Alternative text",
+          type: "string",
+        },
+      ],
     }),
     defineField({
       name: "link",

@@ -14,7 +14,8 @@ export const Footer = () => (
           target="_blank"
           rel="noreferrer noopener"
         >
-          Developed & Prepared by <span className="text-white">Odon</span>
+          Developed & Prepared by{" "}
+          <span className="text-black dark:text-white">Odon</span>
           <span className="text-orange-500">baatar</span>
         </a>
       </small>

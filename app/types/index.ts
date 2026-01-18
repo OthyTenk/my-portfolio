@@ -30,6 +30,8 @@ export type ProfileType = {
   };
   fullBio: PortableTextBlock[];
   email: string;
+  phone?: string;
+  location?: string;
   socialLinks: {
     github: string;
     twitter: string;
