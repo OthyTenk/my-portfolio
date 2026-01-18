@@ -2,3 +2,115 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --primary: 24.6 95% 53.1%;
+    --secondary: 210 40% 96.1%;
+    --muted: 210 40% 96.1%;
+    --accent: 210 40% 96.1%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --primary: 24.6 95% 53.1%;
+    --secondary: 217.2 32.6% 17.5%;
+    --muted: 217.2 32.6% 17.5%;
+    --accent: 217.2 32.6% 17.5%;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-slate-900 dark:bg-[#030712] dark:text-slate-100 antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  ::selection {
+    @apply bg-orange-500/30 text-orange-900 dark:text-orange-100;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/70 dark:bg-black/70 backdrop-blur-md border border-white/20 dark:border-white/10;
+  }
+
+  .mesh-gradient {
+    background-color: hsla(0, 0%, 100%, 1);
+    background-image:
+      radial-gradient(
+        at 40% 20%,
+        hsla(28, 100%, 74%, 0.15) 0px,
+        transparent 50%
+      ),
+      radial-gradient(
+        at 80% 0%,
+        hsla(189, 100%, 56%, 0.1) 0px,
+        transparent 50%
+      ),
+      radial-gradient(
+        at 0% 50%,
+        hsla(355, 100%, 93%, 0.15) 0px,
+        transparent 50%
+      ),
+      radial-gradient(
+        at 80% 50%,
+        hsla(340, 100%, 76%, 0.1) 0px,
+        transparent 50%
+      ),
+      radial-gradient(
+        at 0% 100%,
+        hsla(22, 100%, 77%, 0.15) 0px,
+        transparent 50%
+      ),
+      radial-gradient(
+        at 80% 100%,
+        hsla(242, 100%, 70%, 0.1) 0px,
+        transparent 50%
+      ),
+      radial-gradient(at 0% 0%, hsla(343, 100%, 76%, 0.1) 0px, transparent 50%);
+  }
+
+  .dark .mesh-gradient {
+    background-color: hsla(222, 84%, 4.9%, 1);
+    background-image:
+      radial-gradient(
+        at 40% 20%,
+        hsla(28, 100%, 74%, 0.05) 0px,
+        transparent 50%
+      ),
+      radial-gradient(
+        at 80% 0%,
+        hsla(189, 100%, 56%, 0.05) 0px,
+        transparent 50%
+      ),
+      radial-gradient(
+        at 0% 50%,
+        hsla(355, 100%, 93%, 0.05) 0px,
+        transparent 50%
+      ),
+      radial-gradient(
+        at 80% 50%,
+        hsla(340, 100%, 76%, 0.05) 0px,
+        transparent 50%
+      );
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 dark:bg-slate-700 rounded-full border-4 border-solid border-transparent bg-clip-padding hover:bg-slate-400 dark:hover:bg-slate-600;
+}

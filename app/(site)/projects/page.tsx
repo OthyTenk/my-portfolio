@@ -47,12 +47,21 @@ const page = async () => {
   const projects = await getProjects();
 
   return (
-    <div className="divide-y divide-gray-200 dark:divide-gray-700">
-      <PageHeader title="Projects" />
+    <div className="space-y-12 animate-fade-in">
+      <PageHeader
+        title="Projects"
+        description="A selection of my recent work, featuring full-stack applications, interactive UI designs, and technical experiments."
+      />
 
-      <div className="grid gap-y-8 sm:gap-6 sm:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-10 pt-8">
-        {projects.map((project) => (
-          <ProjectCard key={project._id} project={project} />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {projects.map((project, index) => (
+          <div
+            key={project._id}
+            className="animate-slide-up"
+            style={{ animationDelay: `${index * 100}ms` }}
+          >
+            <ProjectCard project={project} />
+          </div>
         ))}
       </div>
     </div>

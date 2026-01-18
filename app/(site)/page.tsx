@@ -24,61 +24,92 @@ export const revalidate = 10;
 
 const HomePage = async () => {
   const profile = await getProfile();
+  const data = profile[0];
 
   return (
-    <div className="space-x-5 lg:space-y-10">
-      <StructuredData profile={profile[0]} />
-      <article>
-        <div className="mt-24 items-center space-y-2 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0">
-          <div className="flex flex-col items-center pt-8">
-            <Image
-              width={210}
-              height={210}
-              src={profile[0].image?.src}
-              alt={profile[0].image?.alt}
-              className="w-41 h-41 object-cover rounded-full object-top"
-            />
+    <div className="space-y-16 animate-fade-in">
+      <StructuredData profile={data} />
 
-            <h1 className="pt-4 pb-2 text-2xl font-bold leading-8 tracking-tight">
-              {profile[0].fullname}
+      {/* Hero Section */}
+      <section className="relative py-12 lg:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="order-2 lg:order-1 space-y-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-sm font-medium border border-primary-100 dark:border-primary-800 animate-slide-up">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-500"></span>
+              </span>
+              Available for projects
+            </div>
+
+            <h1 className="text-5xl lg:text-7xl font-display font-bold tracking-tight text-slate-900 dark:text-white leading-[1.1] animate-slide-up [animation-delay:100ms]">
+              {data.fullname}
             </h1>
-            <p className="text-gray-500 dark:text-gray-300 text-center">
-              {profile[0].headline}
+
+            <p className="text-xl text-slate-600 dark:text-slate-400 max-w-lg leading-relaxed animate-slide-up [animation-delay:200ms]">
+              {data.headline}
             </p>
 
-            {/* Social Links */}
-            <div className="flex space-x-5 mt-6 py-[10px] px-[14px] items-center rounded-3xl bg-slate-300/30 dark:bg-neutral-600">
-              <SocialLinkItem
-                imgAlt="Visit OkDo's Github"
-                imgSrc="/images/socials/github.svg"
-                url={profile[0].socialLinks.github}
-              />
-
-              <SocialLinkItem
-                imgAlt="OkDo Linked-in"
-                imgSrc="/images/socials/linkedin-in.svg"
-                url={profile[0].socialLinks.linkedin}
-              />
-
-              <SocialLinkItem
-                imgAlt="Contact to OkDo"
-                imgSrc="/images/socials/email.svg"
-                url={`mailto:${profile[0].email}`}
-              />
-
-              <SocialLinkItem
-                imgAlt="OkDo's X (twitter.com)"
-                imgSrc="/images/socials/x-twitter.svg"
-                url={profile[0].socialLinks.twitter}
-              />
+            <div className="flex flex-wrap gap-4 animate-slide-up [animation-delay:300ms]">
+              <div className="flex items-center gap-3 p-2 bg-white/50 dark:bg-white/5 backdrop-blur-sm border border-slate-200 dark:border-white/10 rounded-2xl shadow-sm">
+                <SocialLinkItem
+                  imgAlt="Github"
+                  imgSrc="/images/socials/github.svg"
+                  url={data.socialLinks.github}
+                />
+                <SocialLinkItem
+                  imgAlt="LinkedIn"
+                  imgSrc="/images/socials/linkedin-in.svg"
+                  url={data.socialLinks.linkedin}
+                />
+                <SocialLinkItem
+                  imgAlt="X"
+                  imgSrc="/images/socials/x-twitter.svg"
+                  url={data.socialLinks.twitter}
+                />
+                <div className="w-px h-6 bg-slate-200 dark:bg-white/10" />
+                <a
+                  href={`mailto:${data.email}`}
+                  className="px-4 py-2 bg-primary-500 hover:bg-primary-600 text-white rounded-xl transition-all font-medium text-sm shadow-lg shadow-primary-500/25"
+                >
+                  Hire Me
+                </a>
+              </div>
             </div>
           </div>
 
-          <div className="prose max-w-none prose-lg pt-8 pb-7 dark:prose-invert xl:col-span-2">
-            <PortableText value={profile[0].fullBio} />
+          <div className="order-1 lg:order-2 flex justify-center lg:justify-end animate-fade-in [animation-delay:400ms]">
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+              <div className="relative">
+                <Image
+                  width={400}
+                  height={400}
+                  src={data.image?.src}
+                  alt={data.image?.alt}
+                  className="w-64 h-64 lg:w-80 lg:h-80 object-cover rounded-full border-4 border-white dark:border-slate-800 shadow-2xl relative z-10"
+                  priority
+                />
+                {/* Decorative Elements */}
+                <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-accent-500/10 backdrop-blur-xl rounded-2xl -z-10 animate-pulse-slow" />
+                <div className="absolute -top-4 -left-4 w-16 h-16 bg-primary-500/10 backdrop-blur-xl rounded-full -z-10 animate-pulse-slow [animation-delay:1s]" />
+              </div>
+            </div>
           </div>
         </div>
-      </article>
+      </section>
+
+      {/* About Section */}
+      <section className="relative overflow-hidden">
+        <div className="max-w-4xl mx-auto">
+          <div
+            className="prose prose-lg dark:prose-invert prose-slate dark:prose-slate max-w-none 
+            prose-headings:font-display prose-headings:font-bold prose-p:leading-relaxed prose-a:text-primary-500"
+          >
+            <PortableText value={data.fullBio} />
+          </div>
+        </div>
+      </section>
 
       <HomeCategory />
     </div>

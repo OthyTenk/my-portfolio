@@ -8,93 +8,87 @@ import { ThemeSwitcher } from "./ThemeSwitcher";
 export const Navbar = () => {
   const pathname = usePathname() || "/";
 
+  const navLinks = [
+    { name: "Home", href: "/" },
+    { name: "Projects", href: "/projects" },
+    { name: "Contact", href: "/contact" },
+  ];
+
   return (
-    <Disclosure as="nav">
+    <Disclosure
+      as="nav"
+      className="sticky top-0 z-50 transition-all duration-300"
+    >
       {({ open }) => (
-        <>
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between h-16">
+        <div className="mx-4 mt-4">
+          <div className="max-w-6xl mx-auto glass rounded-2xl shadow-lg shadow-black/5">
+            <div className="flex justify-between h-16 px-4 sm:px-6">
               <div className="flex justify-between w-full">
                 <div className="flex items-center">
-                  <Link href="/">
-                    <div className="text-2xl font-medium">
-                      ver<span className="text-orange-500">41</span>
+                  <Link href="/" className="group flex items-center gap-1">
+                    <div className="text-2xl font-display font-bold tracking-tight">
+                      ver
+                      <span className="text-primary-500 group-hover:text-primary-600 transition-colors">
+                        41
+                      </span>
                     </div>
                   </Link>
                 </div>
 
-                <div className="hidden sm:ml-6 sm:flex sm:space-x-8 sm:items-center">
-                  <Link
-                    href="/"
-                    prefetch
-                    className={`${
-                      pathname === "/"
-                        ? "border-orange-500 dark:text-white h-full inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-                        : "border-transparent text-gray-500 dark:text-gray-300 dark:hover:text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-                    }`}
-                  >
-                    Home
-                  </Link>
+                <div className="hidden sm:ml-6 sm:flex sm:space-x-4 sm:items-center">
+                  {navLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      prefetch
+                      className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200 rounded-lg h-10 flex items-center ${
+                        pathname === link.href
+                          ? "text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20"
+                          : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800"
+                      }`}
+                    >
+                      {link.name}
+                      {pathname === link.href && (
+                        <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary-500 rounded-full scale-x-75" />
+                      )}
+                    </Link>
+                  ))}
 
-                  <Link
-                    href="/projects"
-                    prefetch
-                    className={`${
-                      pathname === "/projects"
-                        ? "border-orange-500 dark:text-white h-full inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-                        : "border-transparent text-gray-500 dark:text-gray-300 dark:hover:text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-                    }`}
-                  >
-                    Projects
-                  </Link>
-
-                  <Link
-                    href="/contact"
-                    prefetch
-                    className={`${
-                      pathname === "/contact"
-                        ? "border-orange-500 dark:text-white h-full inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-                        : "border-transparent text-gray-500 dark:text-gray-300 dark:hover:text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-                    }`}
-                  >
-                    Contact
-                  </Link>
-
+                  <div className="w-px h-6 bg-slate-200 dark:bg-slate-800 mx-2" />
                   <ThemeSwitcher />
                 </div>
               </div>
 
-              <div className="-mr-2 space-x-2 flex items-center sm:hidden">
+              <div className="-mr-2 flex items-center sm:hidden space-x-2">
                 <ThemeSwitcher />
-                <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange-500 dark:hover:bg-gray-800">
+                <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-slate-100 dark:hover:bg-slate-800 focus:outline-none transition-all">
+                  <span className="sr-only">Open main menu</span>
                   {open ? (
                     <svg
-                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-6 h-6"
                       fill="none"
                       viewBox="0 0 24 24"
-                      strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-6 h-6"
                     >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
+                        strokeWidth={2}
                         d="M6 18L18 6M6 6l12 12"
                       />
                     </svg>
                   ) : (
                     <svg
-                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-6 h-6"
                       fill="none"
                       viewBox="0 0 24 24"
-                      strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-6 h-6"
                     >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                        strokeWidth={2}
+                        d="M4 6h16M4 12h16M4 18h16"
                       />
                     </svg>
                   )}
@@ -103,44 +97,25 @@ export const Navbar = () => {
             </div>
           </div>
 
-          <Disclosure.Panel className="sm:hidden">
-            <div className="pt-2 pb-3 space-y-1">
-              <Link
-                href="/"
-                prefetch
-                className={`${
-                  pathname == "/"
-                    ? "bg-orange-50  border-orange-500 text-orange-500 block pl-3 pr-4 py-2 border-l-4 text-base font-medium dark:bg-gray-800"
-                    : "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-orange-500 block pl-3 pr-4 py-2 dark:hover:bg-gray-700 border-l-4 text-base font-medium dark:text-white"
-                } `}
-              >
-                Home
-              </Link>
-              <Link
-                href="/projects"
-                prefetch
-                className={`${
-                  pathname == "/projects"
-                    ? "bg-orange-50 border-orange-500 text-orange-500 block pl-3 pr-4 py-2 border-l-4 text-base font-medium dark:bg-gray-800"
-                    : "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-orange-500 block pl-3 pr-4 py-2 dark:hover:bg-gray-700 border-l-4 text-base font-medium dark:text-white"
-                } `}
-              >
-                Projects
-              </Link>
-              <Link
-                href="/contact"
-                prefetch
-                className={`${
-                  pathname == "/contact"
-                    ? "bg-orange-50 border-orange-500 text-orange-500 block pl-3 pr-4 py-2 border-l-4 text-base font-medium dark:bg-gray-800"
-                    : "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-orange-500 block pl-3 pr-4 py-2 dark:hover:bg-gray-700 border-l-4 text-base font-medium dark:text-white"
-                } `}
-              >
-                Contact
-              </Link>
+          <Disclosure.Panel className="sm:hidden mt-2">
+            <div className="glass rounded-2xl p-2 shadow-xl shadow-black/5 animate-slide-up">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  prefetch
+                  className={`block px-4 py-3 rounded-xl text-base font-medium transition-all ${
+                    pathname === link.href
+                      ? "bg-primary-50 text-primary-600 dark:bg-primary-900/20 dark:text-primary-400"
+                      : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              ))}
             </div>
           </Disclosure.Panel>
-        </>
+        </div>
       )}
     </Disclosure>
   );
