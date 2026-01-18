@@ -7,6 +7,7 @@ import { Badge, PageHeader } from "../../components";
 import Link from "next/link";
 import { FC } from "react";
 import { url } from "@/app/utils/constants";
+import { PortableText } from "@portabletext/react";
 
 const getProjectDetails = async ({
   slug,
@@ -23,6 +24,7 @@ const getProjectDetails = async ({
           slug
         },
         overview,
+        description,
         _id,
         link,
         "imageUrl":image.asset->url
@@ -122,7 +124,8 @@ const page: FC<PageProps> = async ({ params }) => {
     );
   }
 
-  const { title, imageUrl, link, overview, categories, related } = project;
+  const { title, imageUrl, link, overview, categories, related, description } =
+    project;
 
   return (
     <article className="animate-fade-in space-y-12">
@@ -169,10 +172,19 @@ const page: FC<PageProps> = async ({ params }) => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 pt-8">
         {/* Main Content */}
         <div className="lg:col-span-2 space-y-8 animate-slide-up [animation-delay:100ms]">
-          <div className="prose prose-lg dark:prose-invert prose-slate max-w-none">
-            <h2 className="text-2xl font-display font-bold">Overview</h2>
-            <p className="leading-relaxed">{overview}</p>
-          </div>
+          {overview && (
+            <div className="prose prose-lg dark:prose-invert prose-slate max-w-none">
+              <h2 className="text-2xl font-display font-bold">Overview</h2>
+              <p className="leading-relaxed">{overview}</p>
+            </div>
+          )}
+
+          {description && (
+            <div className="prose prose-lg dark:prose-invert prose-slate max-w-none">
+              <h2 className="text-2xl font-display font-bold">Description</h2>
+              <PortableText value={description} />
+            </div>
+          )}
 
           {link && (
             <div className="p-1 px-1 flex flex-col sm:flex-row items-center gap-4">
@@ -226,7 +238,9 @@ const page: FC<PageProps> = async ({ params }) => {
             </h3>
             <div className="flex flex-wrap gap-2">
               {categories?.map((cat, index) => (
-                <Badge key={index} title={cat.title} />
+                <Link key={index} href={`/tech-stacks/${cat.slug.current}`}>
+                  <Badge title={cat.title} />
+                </Link>
               ))}
             </div>
           </div>

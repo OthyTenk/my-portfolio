@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ProfileType } from "../types";
 import { client } from "../utils/sanity.client";
 import SocialLinkItem from "./components/SocialLinkItem";
+import Link from "next/link";
 
 const getProfile = async (): Promise<ProfileType[]> => {
   return client.fetch(
@@ -34,13 +35,15 @@ const HomePage = async () => {
       <section className="relative py-12 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="order-2 lg:order-1 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-sm font-medium border border-primary-100 dark:border-primary-800 animate-slide-up">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-500"></span>
-              </span>
-              Available for projects
-            </div>
+            <Link href="/projects">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-sm font-medium border border-primary-100 dark:border-primary-800 animate-slide-up">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-500"></span>
+                </span>
+                Available for projects
+              </div>
+            </Link>
 
             <h1 className="text-5xl lg:text-7xl font-display font-bold tracking-tight text-slate-900 dark:text-white leading-[1.1] animate-slide-up [animation-delay:100ms]">
               {data.fullname}
@@ -82,14 +85,16 @@ const HomePage = async () => {
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
               <div className="relative">
-                <Image
-                  width={400}
-                  height={400}
-                  src={data.image?.src}
-                  alt={data.image?.alt}
-                  className="w-64 h-64 lg:w-80 lg:h-80 object-cover rounded-full border-4 border-white dark:border-slate-800 shadow-2xl relative z-10"
-                  priority
-                />
+                <Link href="/projects">
+                  <Image
+                    width={400}
+                    height={400}
+                    src={data.image?.src}
+                    alt={data.image?.alt}
+                    className="w-64 h-64 lg:w-80 lg:h-80 object-cover rounded-full border-4 border-white dark:border-slate-800 shadow-2xl relative z-10"
+                    priority
+                  />
+                </Link>
                 {/* Decorative Elements */}
                 <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-accent-500/10 backdrop-blur-xl rounded-2xl -z-10 animate-pulse-slow" />
                 <div className="absolute -top-4 -left-4 w-16 h-16 bg-primary-500/10 backdrop-blur-xl rounded-full -z-10 animate-pulse-slow [animation-delay:1s]" />

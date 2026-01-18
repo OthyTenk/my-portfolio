@@ -13,6 +13,7 @@ export type ProjectType = {
     current: string;
   };
   overview?: string;
+  description?: PortableTextBlock[];
   link?: string;
   _id: string;
   imageUrl?: string;
@@ -42,8 +43,12 @@ export type ProfileType = {
 export type CategoryType = {
   _id: string;
   title: string;
+  slug: {
+    current: string;
+  };
   imageUrl: string;
   parent: {
     _ref: string;
   };
+  projectCount?: number;
 };
