@@ -8,7 +8,22 @@ import { url } from "@/app/utils/constants";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with me for collaborations, projects, or just to say hi.",
+    "Get in touch with me for collaborations, projects, or just to say hi. Reach out via email, LinkedIn, or follow me on social media.",
+  openGraph: {
+    title: "Contact | Odonbaatar Portfolio",
+    description:
+      "Get in touch with me for collaborations, projects, or just to say hi. Reach out via email, LinkedIn, or follow me on social media.",
+    url: `${url}/contact`,
+    siteName: "Odonbaatar Portfolio",
+    type: "website",
+    images: ["/og-image.png"],
+  },
+  twitter: {
+    title: "Contact | Odonbaatar Portfolio",
+    description:
+      "Get in touch with me for collaborations, projects, or just to say hi. Reach out via email, LinkedIn, or follow me on social media.",
+    images: ["/og-image.png"],
+  },
   alternates: {
     canonical: `${url}/contact`,
   },

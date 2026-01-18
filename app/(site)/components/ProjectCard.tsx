@@ -12,17 +12,23 @@ interface ProjectCardProps {
 export const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
   return (
     <article className="mx-4 lg:mx-0 overflow-hidden dark:border-zinc-600 rounded-3xl hover:shadow-lg border border-neutral-200 bg-slate-300/20 shadow-none dark:bg-[#1a1a1a] dark:shadow-gray-700 shadow-orange-100">
-      <div className="h-64 w-full relative overflow-hidden">
-        <Image
-          fill
-          src={project.imageUrl}
-          alt={project.title}
-          className="w-full h-full object-cover hover:scale-105 transition"
-        />
+      <div className="h-64 w-full relative overflow-hidden bg-gray-100 dark:bg-gray-800">
+        {project.imageUrl ? (
+          <Image
+            fill
+            src={project.imageUrl}
+            alt={project.title}
+            className="w-full h-full object-cover hover:scale-105 transition"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center text-gray-400">
+            No Image
+          </div>
+        )}
       </div>
 
       <div className="p-4 sm:p-6 flex flex-col">
-        <Link href={`projects/${project.slug.current}`}>
+        <Link href={`/projects/${project.slug.current}`}>
           <h3 className="text-lg line-clamp-2 font-medium text-gray-900 dark:text-white">
             {project.title}
           </h3>
@@ -33,7 +39,7 @@ export const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
         </p>
 
         <Link
-          href={`projects/${project.slug.current}`}
+          href={`/projects/${project.slug.current}`}
           className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-orange-500"
         >
           More

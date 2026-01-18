@@ -81,7 +81,9 @@ export const metadata: Metadata = {
     icon: "/icon.png",
     apple: "/icon.png",
   },
-  manifest: "/manifest.json",
+  facebook: {
+    appId: "1234567890", // Replace with your actual Facebook App ID
+  },
 };
 
 export default function RootLayout({

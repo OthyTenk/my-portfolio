@@ -51,20 +51,26 @@ export async function generateMetadata({
     };
   }
 
+  const title = project.title || "Project Details";
+  const description =
+    project.overview || "Explore this project in my portfolio.";
+  const projectImage = project.imageUrl || "/og-image.png";
+
   return {
-    title: project.title,
-    description: project.overview,
+    title: title,
+    description: description,
     openGraph: {
-      title: project.title,
-      description: project.overview,
+      title: title,
+      description: description,
       type: "article",
       url: `${url}/projects/${project.slug.current}`,
+      siteName: "Odonbaatar Portfolio",
       images: [
         {
-          url: project.imageUrl ?? "/og-image.png",
+          url: projectImage,
           width: 1200,
           height: 630,
-          alt: project.title,
+          alt: title,
         },
       ],
     },
@@ -73,9 +79,9 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: project.title,
-      description: project.overview,
-      images: [project.imageUrl ?? "/og-image.png"],
+      title: title,
+      description: description,
+      images: [projectImage],
     },
   };
 }
@@ -83,7 +89,6 @@ export async function generateMetadata({
 const page: FC<PageProps> = async ({ params }) => {
   const { slug } = await params;
   const project = await getProjectDetails({ slug });
-  const { title, imageUrl, link, overview, categories, related } = project;
 
   if (!project) {
     return (
@@ -96,17 +101,25 @@ const page: FC<PageProps> = async ({ params }) => {
     );
   }
 
+  const { title, imageUrl, link, overview, categories, related } = project;
+
   return (
     <article className="divide-y divide-gray-200 dark:divide-gray-700">
       <PageHeader title={title} />
 
-      <div className="h-96 w-full relative overflow-hidden rounded-3xl">
-        <Image
-          fill
-          src={imageUrl}
-          alt={title}
-          className="w-full h-full object-cover"
-        />
+      <div className="h-96 w-full relative overflow-hidden rounded-3xl bg-gray-100 dark:bg-gray-800">
+        {imageUrl ? (
+          <Image
+            fill
+            src={imageUrl}
+            alt={title}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center text-gray-400">
+            No Image Available
+          </div>
+        )}
       </div>
 
       <div className="flex flex-col lg:flex-row my-10 pt-10">
@@ -147,12 +160,12 @@ const page: FC<PageProps> = async ({ params }) => {
           related.map((r, index) => (
             <div key={index}>
               -
-              <a
-                href={r.slug.current}
+              <Link
+                href={`/projects/${r.slug.current}`}
                 className="hover:underline hover:text-orange-500 ml-2"
               >
                 {r.title}
-              </a>
+              </Link>
             </div>
           ))}
       </div>
