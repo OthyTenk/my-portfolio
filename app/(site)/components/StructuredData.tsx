@@ -10,6 +10,7 @@ export const StructuredData = ({ profile }: { profile: ProfileType }) => {
     url: url,
     image: profile.image.src,
     email: profile.email,
+    telephone: profile.phone,
     sameAs: [
       profile.socialLinks.github,
       profile.socialLinks.linkedin,

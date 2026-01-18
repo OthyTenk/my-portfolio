@@ -44,6 +44,16 @@ export default defineType({
       type: 'string',
     },
     {
+      name: 'phone',
+      title: 'Phone Number',
+      type: 'string',
+    },
+    {
+      name: 'location',
+      title: 'Location',
+      type: 'string',
+    },
+    {
       name: 'fullBio',
       title: 'Full Bio',
       type: 'array',

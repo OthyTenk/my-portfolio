@@ -1,0 +1,42 @@
+import { createClient } from "next-sanity";
+import { NextResponse } from "next/server";
+
+export async function POST(request: Request) {
+  const body = await request.json();
+  const { name, email, subject, message } = body;
+
+  if (!name || !email || !subject || !message) {
+    return NextResponse.json(
+      { error: "Missing required fields" },
+      { status: 400 },
+    );
+  }
+
+  const client = createClient({
+    projectId: "c5g75h7y",
+    dataset: "production",
+    apiVersion: "2026-01-17",
+    token: process.env.SANITY_API_TOKEN,
+    useCdn: false,
+  });
+
+  try {
+    await client.create({
+      _type: "message",
+      name,
+      email,
+      subject,
+      message,
+    });
+    return NextResponse.json(
+      { message: "Message sent successfully" },
+      { status: 200 },
+    );
+  } catch (error) {
+    console.error("Sanity error:", error);
+    return NextResponse.json(
+      { error: "Failed to send message" },
+      { status: 500 },
+    );
+  }
+}
