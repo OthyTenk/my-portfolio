@@ -17,9 +17,9 @@ export const Navbar = () => {
               <div className="flex justify-between w-full">
                 <div className="flex items-center">
                   <Link href="/">
-                    <h1 className="text-2xl font-medium">
-                      Ok<span className="text-orange-500">Do</span>
-                    </h1>
+                    <div className="text-2xl font-medium">
+                      ver<span className="text-orange-500">41</span>
+                    </div>
                   </Link>
                 </div>
 

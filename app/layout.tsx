@@ -10,14 +10,29 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   metadataBase: new URL(url),
   title: {
-    default: "OkDo - Full Stack Developer & Portfolio",
-    template: "%s | OkDo Portfolio"
+    default: "Odonbaatar - Full Stack Developer & Portfolio",
+    template: "%s | Odonbaatar Portfolio",
   },
-  description: "Full Stack Developer specializing in modern web technologies. Explore my projects built with Next.js, React, TypeScript, and more. Based in Mongolia.",
-  keywords: ["OkDo", "Portfolio", "Full Stack Developer", "Web Developer", "Next.js", "React", "TypeScript", "C#", "Sanity CMS", "WordPress", "Pothos", "Tailwind CSS", "Software Engineer"],
-  authors: [{ name: "OkDo", url: "https://github.com/OthyTenk" }],
-  creator: "OkDo",
-  publisher: "OkDo",
+  description:
+    "Full Stack Developer specializing in modern web technologies. Explore my projects built with Next.js, React, TypeScript, and more. Based in Mongolia.",
+  keywords: [
+    "Odonbaatar",
+    "Portfolio",
+    "Full Stack Developer",
+    "Web Developer",
+    "Next.js",
+    "React",
+    "TypeScript",
+    "C#",
+    "Sanity CMS",
+    "WordPress",
+    "Pothos",
+    "Tailwind CSS",
+    "Software Engineer",
+  ],
+  authors: [{ name: "Odonbaatar", url: "https://github.com/OthyTenk" }],
+  creator: "Odonbaatar",
+  publisher: "Odonbaatar",
   formatDetection: {
     email: false,
     address: false,
@@ -27,22 +42,27 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: url,
-    title: "OkDo - Full Stack Developer & Portfolio",
-    description: "Full Stack Developer specializing in modern web technologies. Explore my projects built with Next.js, React, TypeScript, and more.",
-    siteName: "OkDo Portfolio",
+    title: "Odonbaatar - Full Stack Developer & Portfolio",
+    description:
+      "Full Stack Developer specializing in modern web technologies. Explore my projects built with Next.js, React, TypeScript, and more.",
+    siteName: "Odonbaatar Portfolio",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "OkDo Portfolio Preview",
+        alt: "Odonbaatar Portfolio Preview",
       },
     ],
   },
+  alternates: {
+    canonical: url,
+  },
   twitter: {
     card: "summary_large_image",
-    title: "OkDo - Full Stack Developer & Portfolio",
-    description: "Full Stack Developer specializing in modern web technologies. Explore my projects and skills.",
+    title: "Odonbaatar - Full Stack Developer & Portfolio",
+    description:
+      "Full Stack Developer specializing in modern web technologies. Explore my projects and skills.",
     creator: "@odkoo",
     images: ["/og-image.png"],
   },
@@ -52,9 +72,9 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   icons: {

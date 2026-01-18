@@ -13,7 +13,7 @@ const getCategories = async (): Promise<CategoryProps[]> => {
       title,
       parent,
       "imageUrl":image.asset->url
-    }`
+    }`,
   );
 
   return flatListToHierarchical(categoriesData as CategoryProps[]);
@@ -26,9 +26,9 @@ export const HomeCategory = async () => {
 
   return (
     <article className="p-2">
-      <h5 className="flex justify-center text-2xl font-semibold my-10">
+      <h2 className="flex justify-center text-2xl font-semibold my-10">
         Tech Stacks
-      </h5>
+      </h2>
       <ul>
         {categories.map((category, index) => (
           <li key={index} className="mt-4 flex flex-col lg:flex-row gap-2">

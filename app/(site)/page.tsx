@@ -1,4 +1,4 @@
-import { HomeCategory } from "@/app/(site)/components";
+import { HomeCategory, StructuredData } from "@/app/(site)/components";
 import { PortableText } from "@portabletext/react";
 import { groq } from "next-sanity";
 import Image from "next/image";
@@ -16,7 +16,7 @@ const getProfile = async (): Promise<ProfileType[]> => {
         image {alt, "src":asset->url},
         email,
         socialLinks
-    }`
+    }`,
   );
 };
 
@@ -27,6 +27,7 @@ const HomePage = async () => {
 
   return (
     <div className="space-x-5 lg:space-y-10">
+      <StructuredData profile={profile[0]} />
       <article>
         <div className="mt-24 items-center space-y-2 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0">
           <div className="flex flex-col items-center pt-8">
@@ -38,9 +39,9 @@ const HomePage = async () => {
               className="w-41 h-41 object-cover rounded-full object-top"
             />
 
-            <h3 className="pt-4 pb-2 text-2xl font-bold leading-8 tracking-tight">
+            <h1 className="pt-4 pb-2 text-2xl font-bold leading-8 tracking-tight">
               {profile[0].fullname}
-            </h3>
+            </h1>
             <p className="text-gray-500 dark:text-gray-300 text-center">
               {profile[0].headline}
             </p>
