@@ -2,6 +2,17 @@ import { groq } from "next-sanity";
 import { ProjectType } from "@/app/types";
 import { client } from "@/app/utils/sanity.client";
 import { PageHeader, ProjectCard } from "../components";
+import { Metadata } from "next";
+import { url } from "@/app/utils/constants";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description:
+    "Explore my latest projects built with modern technologies like React, Next.js, and TypeScript.",
+  alternates: {
+    canonical: `${url}/projects`,
+  },
+};
 
 const getProjects = async (): Promise<ProjectType[]> => {
   return client.fetch(
@@ -12,7 +23,7 @@ const getProjects = async (): Promise<ProjectType[]> => {
         _id,
         link,
         "imageUrl":image.asset->url
-      }`
+      }`,
   );
 };
 export const revalidate = 10;

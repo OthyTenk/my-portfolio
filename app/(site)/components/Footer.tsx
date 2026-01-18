@@ -14,7 +14,8 @@ export const Footer = () => (
           target="_blank"
           rel="noreferrer noopener"
         >
-          Developed & Prepared by <span className="text-orange-500">OkDo</span>
+          Developed & Prepared by <span className="text-white">Odon</span>
+          <span className="text-orange-500">baatar</span>
         </a>
       </small>
     </div>

@@ -6,3 +6,4 @@ export { Provider } from "./Provider";
 export { ThemeSwitcher } from "./ThemeSwitcher";
 export { HomeCategory } from "./HomeCategory";
 export { Budge } from "./Budge";
+export { StructuredData } from "./StructuredData";

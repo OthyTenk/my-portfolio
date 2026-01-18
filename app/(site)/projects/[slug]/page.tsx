@@ -27,11 +27,10 @@ const getProjectDetails = async ({
         link,
         "imageUrl":image.asset->url
       }`,
-    { slug }
+    { slug },
   );
 };
 export const revalidate = 10;
-
 
 interface PageProps {
   params: Promise<{
@@ -39,7 +38,9 @@ interface PageProps {
   }>;
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const project = await getProjectDetails({ slug });
 
@@ -66,6 +67,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
           alt: project.title,
         },
       ],
+    },
+    alternates: {
+      canonical: `${url}/projects/${project.slug.current}`,
     },
     twitter: {
       card: "summary_large_image",
@@ -123,9 +127,9 @@ const page: FC<PageProps> = async ({ params }) => {
 
         {/* Right side content */}
         <div className="w-full mt-12 lg:mt-0 lg:w-2/5 lg:ps-10 xl:ps-0 xl:w-1/3">
-          <h5 className="text-xl font-medium mb-4">
+          <h2 className="text-xl font-medium mb-4">
             Tech Stacks ({categories?.length || 0})
-          </h5>
+          </h2>
           <div className="flex flex-wrap gap-2">
             {categories.map((cat, index) => (
               <Budge key={index} title={cat.title} />
@@ -135,9 +139,9 @@ const page: FC<PageProps> = async ({ params }) => {
       </div>
 
       <div className="mt-10">
-        <h5 className="text-xl font-medium mt-8 mb-4">
+        <h2 className="text-xl font-medium mt-8 mb-4">
           Related Projects ({related?.length || 0})
-        </h5>
+        </h2>
 
         {related &&
           related.map((r, index) => (
