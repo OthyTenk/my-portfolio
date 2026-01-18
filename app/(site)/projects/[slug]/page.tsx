@@ -3,7 +3,7 @@ import { client } from "@/app/utils/sanity.client";
 import { groq } from "next-sanity";
 import { Metadata } from "next";
 import Image from "next/image";
-import { Budge, PageHeader } from "../../components";
+import { Badge, PageHeader } from "../../components";
 import Link from "next/link";
 import { FC } from "react";
 import { url } from "@/app/utils/constants";
@@ -92,10 +92,31 @@ const page: FC<PageProps> = async ({ params }) => {
 
   if (!project) {
     return (
-      <article className="mx-auto px-40 flex flex-col item-center justify-center">
-        <h6 className="text-xl font-normal">Oops!, Some thing went wrong</h6>
-        <Link href="/" className="mt-20 font-semibold text-orange-500">
-          Go back
+      <article className="mx-auto max-w-2xl text-center py-20 px-6 animate-fade-in">
+        <h2 className="text-3xl font-display font-bold text-slate-900 dark:text-white mb-4">
+          Oops! Something went wrong
+        </h2>
+        <p className="text-slate-500 dark:text-slate-400 mb-8">
+          The project you're looking for doesn't exist or has been moved.
+        </p>
+        <Link
+          href="/projects"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-primary-500 text-white rounded-xl font-medium hover:bg-primary-600 transition-all shadow-lg shadow-primary-500/25"
+        >
+          <svg
+            className="w-5 h-5 rotate-180"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M17 8l4 4m0 0l-4 4m4-4H3"
+            />
+          </svg>
+          Back to Projects
         </Link>
       </article>
     );
@@ -104,70 +125,150 @@ const page: FC<PageProps> = async ({ params }) => {
   const { title, imageUrl, link, overview, categories, related } = project;
 
   return (
-    <article className="divide-y divide-gray-200 dark:divide-gray-700">
-      <PageHeader title={title} />
+    <article className="animate-fade-in space-y-12">
+      <header className="space-y-6">
+        <Link
+          href="/projects"
+          className="inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-primary-500 transition-colors"
+        >
+          <svg
+            className="w-4 h-4 rotate-180"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M17 8l4 4m0 0l-4 4m4-4H3"
+            />
+          </svg>
+          Back to Projects
+        </Link>
+        <PageHeader title={title} />
+      </header>
 
-      <div className="h-96 w-full relative overflow-hidden rounded-3xl bg-gray-100 dark:bg-gray-800">
+      {/* Featured Image */}
+      <div className="relative aspect-video w-full overflow-hidden rounded-[2.5rem] shadow-2xl animate-slide-up">
         {imageUrl ? (
           <Image
             fill
             src={imageUrl}
             alt={title}
-            className="w-full h-full object-cover"
+            className="object-cover"
+            priority
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center text-gray-400">
+          <div className="w-full h-full flex items-center justify-center bg-slate-100 dark:bg-slate-800 text-slate-400">
             No Image Available
           </div>
         )}
       </div>
 
-      <div className="flex flex-col lg:flex-row my-10 pt-10">
-        <div className="w-full lg:w-3/5 xl:w-2/3 xl:pe-20">
-          <div className="font-thin gap-2">
-            Project URL:
-            <a
-              href={link}
-              target="_blank"
-              className="ml-2 hover:underline text-orange-500"
-            >
-              {link}
-            </a>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 pt-8">
+        {/* Main Content */}
+        <div className="lg:col-span-2 space-y-8 animate-slide-up [animation-delay:100ms]">
+          <div className="prose prose-lg dark:prose-invert prose-slate max-w-none">
+            <h2 className="text-2xl font-display font-bold">Overview</h2>
+            <p className="leading-relaxed">{overview}</p>
           </div>
 
-          <p className="py-4">{overview}</p>
-        </div>
-
-        {/* Right side content */}
-        <div className="w-full mt-12 lg:mt-0 lg:w-2/5 lg:ps-10 xl:ps-0 xl:w-1/3">
-          <h2 className="text-xl font-medium mb-4">
-            Tech Stacks ({categories?.length || 0})
-          </h2>
-          <div className="flex flex-wrap gap-2">
-            {categories.map((cat, index) => (
-              <Budge key={index} title={cat.title} />
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="mt-10">
-        <h2 className="text-xl font-medium mt-8 mb-4">
-          Related Projects ({related?.length || 0})
-        </h2>
-
-        {related &&
-          related.map((r, index) => (
-            <div key={index}>
-              -
-              <Link
-                href={`/projects/${r.slug.current}`}
-                className="hover:underline hover:text-orange-500 ml-2"
+          {link && (
+            <div className="p-1 px-1 flex flex-col sm:flex-row items-center gap-4">
+              <a
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-primary-500 text-white rounded-2xl font-semibold hover:bg-primary-600 transition-all shadow-xl shadow-primary-500/25 active:scale-95"
               >
-                {r.title}
-              </Link>
+                Visit Live Site
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
+                </svg>
+              </a>
+              <span className="text-sm text-slate-400 dark:text-slate-500 truncate max-w-xs">
+                {link}
+              </span>
             </div>
-          ))}
+          )}
+        </div>
+
+        {/* Sidebar */}
+        <aside className="space-y-10 animate-slide-up [animation-delay:200ms]">
+          {/* Tech Stacks */}
+          <div className="glass p-8 rounded-3xl space-y-4">
+            <h3 className="text-lg font-display font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <svg
+                className="w-5 h-5 text-primary-500"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                />
+              </svg>
+              Tech Stacks
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {categories?.map((cat, index) => (
+                <Badge key={index} title={cat.title} />
+              ))}
+            </div>
+          </div>
+
+          {/* Related Projects */}
+          {related && related.length > 0 && (
+            <div className="space-y-6">
+              <h3 className="text-lg font-display font-bold text-slate-900 dark:text-white px-2">
+                Related Projects
+              </h3>
+              <div className="space-y-4">
+                {related.map((r, index) => (
+                  <Link
+                    key={index}
+                    href={`/projects/${r.slug.current}`}
+                    className="group flex flex-col p-4 rounded-2xl glass hover:border-primary-500/50 transition-all"
+                  >
+                    <span className="text-slate-900 dark:text-white font-medium group-hover:text-primary-500 transition-colors">
+                      {r.title}
+                    </span>
+                    <span className="text-xs text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-1">
+                      View details
+                      <svg
+                        className="w-3 h-3 transform group-hover:translate-x-1 transition-transform"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+        </aside>
       </div>
     </article>
   );
