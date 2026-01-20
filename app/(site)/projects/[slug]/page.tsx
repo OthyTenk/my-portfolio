@@ -1,13 +1,14 @@
 import { ProjectType } from "@/app/types";
+import { url } from "@/app/utils/constants";
+import { myPortableTextComponents } from "@/app/utils/portableText";
 import { client } from "@/app/utils/sanity.client";
-import { groq } from "next-sanity";
+import { PortableText } from "@portabletext/react";
 import { Metadata } from "next";
+import { groq } from "next-sanity";
 import Image from "next/image";
-import { Badge, PageHeader } from "../../components";
 import Link from "next/link";
 import { FC } from "react";
-import { url } from "@/app/utils/constants";
-import { PortableText } from "@portabletext/react";
+import { Badge, PageHeader } from "../../components";
 
 const getProjectDetails = async ({
   slug,
@@ -174,15 +175,19 @@ const page: FC<PageProps> = async ({ params }) => {
         <div className="lg:col-span-2 space-y-8 animate-slide-up [animation-delay:100ms]">
           {overview && (
             <div className="prose prose-lg dark:prose-invert prose-slate max-w-none">
-              <h2 className="text-2xl font-display font-bold">Overview</h2>
+              {!description && (
+                <h2 className="text-2xl font-display font-bold">Overview</h2>
+              )}
               <p className="leading-relaxed">{overview}</p>
             </div>
           )}
 
           {description && (
             <div className="prose prose-lg dark:prose-invert prose-slate max-w-none">
-              <h2 className="text-2xl font-display font-bold">Description</h2>
-              <PortableText value={description} />
+              <PortableText
+                value={description}
+                components={myPortableTextComponents}
+              />
             </div>
           )}
 
@@ -287,5 +292,7 @@ const page: FC<PageProps> = async ({ params }) => {
     </article>
   );
 };
+
+// PortableText components moved to @/app/utils/portableText
 
 export default page;

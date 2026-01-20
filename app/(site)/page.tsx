@@ -6,6 +6,7 @@ import { ProfileType } from "../types";
 import { client } from "../utils/sanity.client";
 import SocialLinkItem from "./components/SocialLinkItem";
 import Link from "next/link";
+import { myPortableTextComponents } from "../utils/portableText";
 
 const getProfile = async (): Promise<ProfileType[]> => {
   return client.fetch(
@@ -111,7 +112,10 @@ const HomePage = async () => {
             className="prose prose-lg dark:prose-invert prose-slate dark:prose-slate max-w-none 
             prose-headings:font-display prose-headings:font-bold prose-p:leading-relaxed prose-a:text-primary-500"
           >
-            <PortableText value={data.fullBio} />
+            <PortableText
+              value={data.fullBio}
+              components={myPortableTextComponents}
+            />
           </div>
         </div>
       </section>

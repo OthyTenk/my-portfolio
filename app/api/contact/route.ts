@@ -13,9 +13,9 @@ export async function POST(request: Request) {
   }
 
   const client = createClient({
-    projectId: "c5g75h7y",
-    dataset: "production",
-    apiVersion: "2026-01-17",
+    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+    dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+    apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
     token: process.env.SANITY_API_TOKEN,
     useCdn: false,
   });
