@@ -39,12 +39,26 @@ export default defineType({
       type: "string",
       title: "Small Overview",
     }),
-    {
+    defineField({
       name: "description",
       title: "Description",
       type: "array",
-      of: [{ type: "block" }],
-    },
+      of: [
+        { type: "block" },
+        defineArrayMember({
+          type: "image",
+          title: "Image",
+          options: { hotspot: true },
+          fields: [
+            {
+              name: "alt",
+              type: "string",
+              title: "Alternative text",
+            },
+          ],
+        }),
+      ],
+    }),
     defineField({
       name: "image",
       type: "image",

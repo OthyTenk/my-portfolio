@@ -1,3 +1,4 @@
+import { PortableTextBlockComponent } from "next-sanity";
 import { PortableTextBlock } from "sanity";
 
 export type RelatedType = {
@@ -13,7 +14,7 @@ export type ProjectType = {
     current: string;
   };
   overview?: string;
-  description?: PortableTextBlock[];
+  description?: any[];
   link?: string;
   _id: string;
   imageUrl?: string;

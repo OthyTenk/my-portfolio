@@ -7,8 +7,8 @@ export default defineConfig({
   name: "sanity-project",
   title: "OkDo Portfolio",
 
-  projectId: "c5g75h7y",
-  dataset: "production",
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "",
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "",
 
   basePath: "/studio",
 
