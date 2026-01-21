@@ -48,7 +48,15 @@ export default defineType({
         defineArrayMember({
           type: "image",
           title: "Image",
-          options: { hotspot: true },
+          options: {
+            hotspot: {
+              previews: [
+                { title: "2:1", aspectRatio: 2 / 1 },
+                { title: "4:5", aspectRatio: 4 / 5 },
+                { title: "9:16", aspectRatio: 9 / 16 },
+              ],
+            },
+          },
           fields: [
             {
               name: "alt",

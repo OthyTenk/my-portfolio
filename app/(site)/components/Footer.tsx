@@ -20,7 +20,10 @@ export const Footer = () => (
         </div>
 
         <div className="flex items-center gap-6">
-          <small className="text-slate-500 dark:text-slate-400 font-medium">
+          <small
+            className="text-slate-500 dark:text-slate-400 font-medium"
+            suppressHydrationWarning
+          >
             &copy; {new Date().getFullYear()} All rights reserved.
           </small>
           <a

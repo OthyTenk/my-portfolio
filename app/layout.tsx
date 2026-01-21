@@ -79,6 +79,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/icon.png",
+    shortcut: "/favicon.ico",
     apple: "/icon.png",
   },
   facebook: {
@@ -95,6 +96,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${inter.className} bg-white text-black dark:bg-[#1f1f1f] dark:text-white h-full selection:bg-gray-50 dark:selection:bg-gray-800`}
+        suppressHydrationWarning
       >
         <Provider>{children}</Provider>
         <Analytics />

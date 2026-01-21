@@ -8,7 +8,7 @@ const SampleImageComponent = ({ value }: { value: any }) => {
         src={urlForImage(value?.asset).url()}
         alt={value?.alt || "Project Image"}
         fill
-        className="object-cover"
+        className="object-contain"
       />
     </div>
   );

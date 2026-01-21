@@ -1,19 +1,16 @@
-import { Navbar } from "./(site)/components";
+import { Navbar, Footer } from "./(site)/components";
 import Content404 from "./(site)/components/Content404";
 
 const NotFoundPage = () => {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Navbar />
-      <Content404 />
-    </>
+      <main className="flex-grow">
+        <Content404 />
+      </main>
+      <Footer />
+    </div>
   );
-};
-
-export const getStaticProps = async () => {
-  return {
-    props: {},
-  };
 };
 
 export default NotFoundPage;
