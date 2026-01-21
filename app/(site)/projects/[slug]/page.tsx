@@ -293,6 +293,4 @@ const page: FC<PageProps> = async ({ params }) => {
   );
 };
 
-// PortableText components moved to @/app/utils/portableText
-
 export default page;
