@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Odonbaatar Portfolio",
+    name: "Odonbaatar Lhkamtseren",
     short_name: "Odonbaatar",
     description: "Full Stack Developer Portfolio",
     start_url: "/",
@@ -25,4 +25,3 @@ export default function manifest(): MetadataRoute.Manifest {
     ],
   };
 }
-
