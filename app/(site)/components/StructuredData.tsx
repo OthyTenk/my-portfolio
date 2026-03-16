@@ -2,7 +2,7 @@ import { ProfileType } from "@/app/types";
 import { url } from "@/app/utils/constants";
 
 export const StructuredData = ({ profile }: { profile: ProfileType }) => {
-  const jsonLd = {
+  const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
     name: profile.fullname,
@@ -47,10 +47,62 @@ export const StructuredData = ({ profile }: { profile: ProfileType }) => {
     description: profile.headline,
   };
 
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Odonbaatar Portfolio",
+    alternateName: ["Odonbaatar", "OthyTenk"],
+    url: url,
+  };
+
+  const siteNavigationSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: [
+      {
+        "@type": "SiteNavigationElement",
+        position: 1,
+        name: "Home",
+        url: url,
+      },
+      {
+        "@type": "SiteNavigationElement",
+        position: 2,
+        name: "Projects",
+        url: `${url}/projects`,
+      },
+      {
+        "@type": "SiteNavigationElement",
+        position: 3,
+        name: "Contact",
+        url: `${url}/contact`,
+      },
+      {
+        "@type": "SiteNavigationElement",
+        position: 4,
+        name: "Tech Stacks",
+        url: `${url}/tech-stacks`,
+      },
+    ],
+  };
+
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(siteNavigationSchema),
+        }}
+      />
+    </>
   );
 };
+
