@@ -10,13 +10,14 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   metadataBase: new URL(url),
   title: {
-    default: "Odonbaatar - Full Stack Developer & Portfolio",
-    template: "%s | Odonbaatar Portfolio",
+    default: "Odonbaatar | Full Stack Developer",
+    template: "%s | Odonbaatar",
   },
   description:
     "Full Stack Developer specializing in modern web technologies. Explore my projects built with Next.js, React, TypeScript, and more. Based in Mongolia.",
   keywords: [
     "Odonbaatar",
+    "OthyTenk",
     "Portfolio",
     "Full Stack Developer",
     "Web Developer",
@@ -24,11 +25,10 @@ export const metadata: Metadata = {
     "React",
     "TypeScript",
     "C#",
+    ".NET",
     "Sanity CMS",
-    "WordPress",
-    "Pothos",
-    "Tailwind CSS",
     "Software Engineer",
+    "Mongolia",
   ],
   authors: [{ name: "Odonbaatar", url: "https://github.com/OthyTenk" }],
   creator: "Odonbaatar",
@@ -42,9 +42,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: url,
-    title: "Odonbaatar - Full Stack Developer & Portfolio",
+    title: "Odonbaatar | Full Stack Developer",
     description:
-      "Full Stack Developer specializing in modern web technologies. Explore my projects built with Next.js, React, TypeScript, and more.",
+      "Full Stack Developer specializing in modern web technologies. Explore my projects and skills.",
     siteName: "Odonbaatar Portfolio",
     images: [
       {
@@ -60,10 +60,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Odonbaatar - Full Stack Developer & Portfolio",
+    title: "Odonbaatar | Full Stack Developer",
     description:
       "Full Stack Developer specializing in modern web technologies. Explore my projects and skills.",
-    creator: "@odkoo",
+    creator: "@othytenk",
     images: ["/og-image.png"],
   },
   robots: {
@@ -82,10 +82,8 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico",
     apple: "/icon.png",
   },
-  facebook: {
-    appId: "1234567890", // Replace with your actual Facebook App ID
-  },
 };
+
 
 export default function RootLayout({
   children,
