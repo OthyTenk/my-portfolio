@@ -17,6 +17,8 @@ export const metadata: Metadata = {
     "Full Stack Developer specializing in modern web technologies. Explore my projects built with Next.js, React, TypeScript, and more. Based in Mongolia.",
   keywords: [
     "Odonbaatar",
+    "Odonbaatar Lhkamtseren",
+    "L.Odonbaatar",
     "OthyTenk",
     "Portfolio",
     "Full Stack Developer",
@@ -82,8 +84,19 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico",
     apple: "/icon.png",
   },
+  applicationName: "ver41",
+  appleWebApp: {
+    title: "ver41",
+    statusBarStyle: "default",
+    capable: true,
+  },
 };
 
+export const viewport = {
+  themeColor: "#f97316",
+  width: "device-width",
+  initialScale: 1,
+};
 
 export default function RootLayout({
   children,

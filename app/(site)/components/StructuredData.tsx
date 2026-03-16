@@ -50,9 +50,15 @@ export const StructuredData = ({ profile }: { profile: ProfileType }) => {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Odonbaatar Portfolio",
-    alternateName: ["Odonbaatar", "OthyTenk"],
+    name: "ver41",
+    alternateName: [
+      "Odonbaatar",
+      "Odonbaatar Lkhamtseren",
+      "L.Odonbaatar",
+      "Odonbaatar Portfolio",
+    ],
     url: url,
+    logo: `${url}/icon.png`,
   };
 
   const siteNavigationSchema = {
@@ -105,4 +111,3 @@ export const StructuredData = ({ profile }: { profile: ProfileType }) => {
     </>
   );
 };
-
